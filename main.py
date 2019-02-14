@@ -1,12 +1,9 @@
-# constants for range min and range max of values
-range_min = 0.3
-range_max = 50.0
-
-#used to print debug statements
-debug = False
+# Import so we can use the classes
+from RangeFilter import RangeFilter
+from MedianFilter import MedianFilter
 
 #going to be used to store the previous arrays that were passed in
-medianArray = [ [0., 1., 2., 1., 3.], [1., 5., 7., 1., 3.],
+testArrays = [ [0., 1., 2., 1., 3.], [1., 5., 7., 1., 3.],
                 [2., 3., 4., 1., 0.], [3., 3., 3., 1., 3.],
                 [10., 2., 4., 0., 0.] ]
 
@@ -14,44 +11,40 @@ medianArray = [ [0., 1., 2., 1., 3.], [1., 5., 7., 1., 3.],
 # Will create arrays and call rangeFilter to test rangeFilter
 # Will also test medianFilter to test temporal median filter
 def test():
-    name = raw_input("Type 'x' for debug mode: ")
-    if(name is 'x'):
-        global debug #modify global debug to be true
-        debug = True
-    testArray1 = medianArray[0]
-    testArray2 = medianArray[1]
-    testArray3 = medianArray[2]
-    testArray4 = medianArray[3]
-    testArray5 = medianArray[4]
-    rangeFilter(testArray1)
 
-class rangeFilter:
+    # Create range and median objects to utilize
+    range = RangeFilter()
+    median = MedianFilter()
+
+    # tests arrays
+    testArray1 = testArrays[0][:] #copy of array instead of pointing to it
+    testArray2 = testArrays[1]
+    testArray3 = testArrays[2]
+    testArray4 = testArrays[3]
+    testArray5 = testArrays[4]
 
 
-# Crops all values below range_min (resp above range_max)
-# and replaces them with the range_min value (resp above range max)
-# @param arr the single array passed in to do check on
-def rangeFilter(arr):
-    #simple for loop through the array in log(n) time
-    #modifies array[index] to range_min or range_max if out of range
-    if(debug):
-        print "[Array before rangeFilter: " + arr + "]"
-    for index in range(len(arr)):
-        if(arr[index] < range_min ):
-            arr[index] = range_min
-        elif(arr[index] > range_max):
-            arr[index] = range_max
-    if(debug == 1):
-        print "Array after rangeFilter: " + arr + "]"
+    # calling methods of objects and testing
+    #testArray1 = range.update(testArray1)
+    #print testArray1
+    #testArray1 = testArrays[0][:]
 
-    return arr
+    testArray1 = median.update(testArray1, 3)
+    testArray2 = median.update(testArray2, 3)
+    testArray3 = median.update(testArray3, 3)
+    testArray4 = median.update(testArray4, 3)
+    testArray5 = median.update(testArray5, 3)
+    print "Array 1 : ",
+    print(testArray1)
+    print "Array 2 : ",
+    print(testArray2)
+    print "Array 3 : ",
+    print(testArray3)
+    print "Array 4 : ",
+    print(testArray4)
+    print "Array 5 : ",
+    print(testArray5)
 
-# Return the median of the current and previous arrays
-# @param arr the single array passed in to do check on
-# @param D the number of previous scans to look at using medianArray
-def medianFilter(arr, D):
-    print "nothing yet"
-    #for loop
 
 
 #run test function
