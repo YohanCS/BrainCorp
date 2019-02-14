@@ -25,6 +25,9 @@ def test():
     testArray5 = medianArray[4]
     rangeFilter(testArray1)
 
+class rangeFilter:
+
+
 # Crops all values below range_min (resp above range_max)
 # and replaces them with the range_min value (resp above range max)
 # @param arr the single array passed in to do check on
