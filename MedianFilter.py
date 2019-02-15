@@ -9,7 +9,7 @@ class MedianFilter:
     # the array that was passed in
     # @param arr the single array passed in to do check on
     # @return array of medians
-    def medianFilter(self, arr):
+    def filter(self, arr):
 
         # tempArray holds the array that the median will be tested on
         # medianArray holds final array of all the medians of indexes
@@ -58,6 +58,6 @@ class MedianFilter:
         # amount of arrays to look at
         if(len(self.arrayCollection) > D):
             # return -D - 1 slice to get last D items and -1 for new arr
-            return self.medianFilter(self.arrayCollection[-D - 1:])
+            return self.filter(self.arrayCollection[-D - 1:])
         else:
-            return self.medianFilter(self.arrayCollection)
+            return self.filter(self.arrayCollection)
