@@ -1,5 +1,5 @@
 # constants for range min and range max of values
-range_min = 0.3
+range_min = 0.03
 range_max = 50.0
 
 # Implement update of an array and filter range values of an array
@@ -8,6 +8,7 @@ class RangeFilter:
     # Crops all values below range_min (resp above range_max)
     # and replaces them with the range_min value (resp above range max)
     # @param arr the single array passed in to do check on
+    # @return arr that is filtered to be values between range_min and range_max
     def filter(self, arr):
         #simple for loop through the array in log(n) time
         #modifies array[index] to range_min or range_max if out of range
